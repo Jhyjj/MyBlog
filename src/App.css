@@ -1,38 +1,131 @@
-.App {
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.App{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+  font-family:nanumsquare;
+
+}
+
+.App>h1{
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+}
+
+.innerCon{
+  border: 1px solid #fff;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* 프로필란 */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#profile{
+  width: 20%;
+  height: 45%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  background-color: #fff;
+}
+
+#profile>div:nth-child(1){
+  width: 65%;
+  height: 60%;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: url('/public/meme.jpg') center center/100% 100%;
+}
+
+
+#profile>div:nth-child(3), #profile>div:nth-child(4){
+  font-size: 13px;
+}
+
+/* 포스팅란 */
+
+#post{
+  width: 60%;
+  height: 45%;
+}
+
+#post>span{
+  border: 1px solid #eee;
+  background-color: #eee;
+  padding: 5px;
+  font-size: 12px;
+  margin-left: 80%;
+  cursor: pointer;
+}
+
+#post>span.more{
+  margin: 0 auto;
+}
+
+.innerCon h2{
+  font-size: 18px;
+}
+
+.innerCon>ul{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.innerCon>ul>li{
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 5px;
+  padding: 3px 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#post>ul>li>span{
+  font-size: 13px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 투데이위젯 */
+
+#widget{
+  width: 20%;
+  height: 15%;
+}
+
+
+/* 방명록 */
+#visitor{
+  width: 60%;
+  height: 30%;
+}
+
+#visitor>span{
+  border: 1px solid #eee;
+  background-color: #eee;
+  padding: 5px;
+  font-size: 12px;
+  margin-left: 80%;
+  cursor: pointer;
+}
+
+#visitor>span.more{
+  margin: 0 auto;
 }
