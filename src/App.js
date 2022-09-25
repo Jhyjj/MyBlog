@@ -4,6 +4,10 @@ import Post from './components/Post';
 import Widget from './components/Widget';
 import MyProfile from './components/MyProfile';
 import VisitorsBook from './components/VisitorsBook';
+import { Route, Routes } from 'react-router-dom';
+import PostList from './components/Posting/PostList';
+import Write_Post from './components/Posting/Write_Post';
+
 
 function App() {
   return (
@@ -13,6 +17,10 @@ function App() {
       <Post/>
       <Widget/>
       <VisitorsBook/>
+      <Routes>
+        <Route path='/create_post' element={<Write_Post/>}/>
+        <Route path='/post' element={<PostList/>}/>
+      </Routes>
     </div>
   );
 }

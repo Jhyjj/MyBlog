@@ -1,6 +1,7 @@
 import React from 'react';
 
 const VisitorsBook = () => {
+    let arr  = [1,2];
     return (
         <div id="visitor" className='innerCon'>
             <h2>방명록</h2>
