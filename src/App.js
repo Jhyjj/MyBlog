@@ -7,17 +7,14 @@ import VisitorsBook from './components/VisitorsBook';
 import { Route, Routes } from 'react-router-dom';
 import PostList from './components/Posting/PostList';
 import Write_Post from './components/Posting/Write_Post';
+import Main from './components/Main';
 
 
 function App() {
   return (
     <div className="App">
-      <h1>My Blog</h1>
-      <MyProfile/>
-      <Post/>
-      <Widget/>
-      <VisitorsBook/>
       <Routes>
+      <Route path='/' element={<Main/>}/>
         <Route path='/create_post' element={<Write_Post/>}/>
         <Route path='/post' element={<PostList/>}/>
       </Routes>

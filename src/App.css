@@ -1,5 +1,9 @@
 @import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
 
+*{
+  box-sizing: border-box;
+}
+
 li{
   list-style: none;
 }
@@ -10,17 +14,19 @@ a{
 }
 
 .App{
+  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  font-family:nanumsquare;
+}
+
+.Main{
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; 
-  font-family:nanumsquare;
-
 }
 
-.App>h1{
+.Main>h1{
   width: 100%;
   text-align: center;
   height: 60px;
@@ -129,3 +135,65 @@ a{
 #visitor>span.more{
   margin: 0 auto;
 }
+
+
+/* 포스트 작성 */
+#write_post{
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding: 3%;
+}
+
+#write_post>form{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#write_post>form select{
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 30px;
+  padding:1% 3%;
+  border-radius: 10px;
+}
+
+#write_post>form input{
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 30px;
+  padding:1% 3%;
+  border-radius: 10px;
+}
+
+#write_post>form>table{
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+#write_post>form>table>tr>td:nth-child(2){
+  width: 80%;
+}
+
+#desc{
+  background: #fff;
+  border: none;
+  width: 100%;
+  padding: 1% 3%;
+  height: 60vh;
+  border-radius: 10px;
+}
+
+#write_post>form>table button{
+  width: 10%;
+  height: 30px;
+  margin: 10px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
