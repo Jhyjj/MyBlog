@@ -3,6 +3,9 @@
 *{
   box-sizing: border-box;
 }
+body{
+  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+}
 
 li{
   list-style: none;
@@ -14,7 +17,6 @@ a{
 }
 
 .App{
-  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
   font-family:nanumsquare;
 }
 
@@ -66,7 +68,7 @@ a{
 /* 포스팅란 */
 
 #post{
-  width: 60%;
+  width: 65%;
   height: 45%;
 }
 
@@ -119,7 +121,7 @@ a{
 
 /* 방명록 */
 #visitor{
-  width: 60%;
+  width: 65%;
   height: 30%;
 }
 
@@ -140,7 +142,6 @@ a{
 /* 포스트 작성 */
 #write_post{
   width: 100%;
-  height: 100vh;
   text-align: center;
   padding: 3%;
 }
@@ -183,8 +184,19 @@ a{
   border: none;
   width: 100%;
   padding: 1% 3%;
-  height: 60vh;
   border-radius: 10px;
+  text-align: left;
+}
+
+#desc >img{
+  max-width: 100%;
+}
+
+#desc.bold{
+  font-weight: bold;
+}
+#desc.italic{
+  font-style: italic;
 }
 
 #write_post>form>table button{
@@ -197,3 +209,52 @@ a{
   border-radius: 5px;
 }
 
+#styles{
+  text-align: left;
+}
+
+.btns{
+  text-align: center;
+  display: inline-block;
+  margin: 5px;
+  width: 20px; height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+  background-color: #eee;
+}
+
+.btns.selected{
+  background-color: darken(#eee,50%);
+}
+
+.btns:nth-child(1){
+  font-weight: bold;
+}
+
+
+.btns:nth-child(2){
+  font-style: italic;
+}
+
+
+.btns:nth-child(3){
+  text-decoration: underline;
+}
+
+.btns:nth-child(4){
+  text-decoration: line-through
+}
+
+
+.btns:last-child{
+  width: 55px;
+  position: relative;
+}
+
+#hidden-file{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0;
+}
