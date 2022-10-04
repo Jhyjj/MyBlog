@@ -24,16 +24,13 @@ const Write_Post = () => {
         })
     }
 
-    const selectImg = (e)=>{
-        console.log(e);
-    }
-
     //이미지 삽입
     const inputImg = (e)=>{
         console.log("이미지 선택창 팝업");
         const {name} = e.target;
         const img = new FormData();
         console.log(img);
+        console.log(e.target.files);
         if(e.target.files.length>=1){
             for(let key in e.target.files){
                 img.append(name,e.target.files[key])
@@ -44,15 +41,19 @@ const Write_Post = () => {
         })
         .then(res=>{
             console.log(res.data)
+            console.log(res.data.img);
+            const selectImgs = res.data.img;
+            selectImgs.map((imgname)=>{
+                const imgEl = document.createElement("img");
+                imgEl.src = `${API_URL}/upload/${imgname}`;
+                imgEl.alt="";
+                edit.current.append(imgEl);
+            })
+            setFormData({
+                ...formData,
+                img:selectImgs.join()
+            })
         })
-        
-
-        //선택한 이미지를 서버로 보내주기!
-        //그리고 경로를 다시 받아서 img.src에 담아주기
-        const imgEl = document.createElement("img");
-        imgEl.src = "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/32E9/image/BA2Qyx3O2oTyEOsXe2ZtE8cRqGk.JPG";
-        imgEl.alt="";
-        edit.current.append(imgEl);
     }
 
     console.log(formData);
@@ -93,6 +94,10 @@ const Write_Post = () => {
     const onSubmit = (e)=>{
         e.preventDefault();
         console.log(formData);
+        //서버로 formData보내주기
+        axios.post(`${API_URL}/create_post`,formData)
+        .then(res=>
+            console.log(res))
         }
 
     return (
@@ -127,8 +132,8 @@ const Write_Post = () => {
                                 <span className='btns' onClick={onStyleChange}>I</span>
                                 <span className='btns' onClick={onStyleChange}>U</span> 
                                 <span className='btns' onClick={onStyleChange}>S</span>
-                                <span className='btns' onClick={inputImg}>파일첨부
-                                <input type="file" id="hidden-file" onChange={selectImg}/>
+                                <span className='btns'>파일첨부
+                                <input type="file" id="hidden-file" onChange={inputImg} multiple name='imgs'/>
                                 </span>
                             </div>
                             <div id="desc" contentEditable="true" draggable="true" ref={edit} onInput={onChangeContent}>
