@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
+import { useNavigate } from 'react-router-dom';
 
 
 const Write_Post = () => {
+
+    const navigator = useNavigate();
 
     const editor = document.querySelector('#desc');
     const edit = useRef();
@@ -96,8 +99,11 @@ const Write_Post = () => {
         console.log(formData);
         //서버로 formData보내주기
         axios.post(`${API_URL}/create_post`,formData)
-        .then(res=>
-            console.log(res))
+        .then(res=>{
+            console.log(res)
+            alert("포스트가 작성되었습니다.")
+            navigator("/post")
+        })
         }
 
     return (

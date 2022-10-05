@@ -6,8 +6,7 @@ import VisitorsBook from './VisitorsBook';
 
 const Main = () => {
     return (
-        <div className='Main'>
-            <h1>공부를 합시다👩‍💻</h1>
+        <div className='Main inner' >
         <MyProfile/>
         <Post/>
         <Widget/>
