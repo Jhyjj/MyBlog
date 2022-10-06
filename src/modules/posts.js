@@ -24,10 +24,10 @@ const initialState = {
 
 //액션생성함수
 
-export const getPosts = ()=> async dispatch =>{
+export const getPosts = (list)=> async dispatch =>{
     dispatch({type:GET_POSTS})
     try{
-        const response = await axios.get(`${API_URL}/posts`)
+        const response = await axios.get(`${API_URL}/posts/${list}`)
         const result = response.data;
         console.log(result)
         dispatch({type:GET_POSTS_SUCCESS,result})

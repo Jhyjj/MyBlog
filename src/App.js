@@ -9,6 +9,7 @@ import PostList from './components/Posting/PostList';
 import Write_Post from './components/Posting/Write_Post';
 import Main from './components/Main';
 import Post_detail from './components/Posting/Post_detail';
+import EditPost from './components/Posting/EditPost';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/create_post' element={<Write_Post/>}/>
         <Route path='/post' element={<PostList/>}/>
         <Route path='/post/:no' element={<Post_detail/>}/>
+        <Route path='/editpost/:no' element={<EditPost/>}/>
       </Routes>
     </div>
   );

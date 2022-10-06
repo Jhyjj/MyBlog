@@ -1,40 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import printPost, { getPost, getPosts } from '../../modules/posts';
+import PrintPostList from './PrintPostList';
 
 const PostList = () => {
 
-    const {data,loading,error} = useSelector(state=>state.printPost.posts)
-    const dispatch = useDispatch();
-    useEffect(()=>{
-        dispatch(getPosts())
-    },[dispatch])
-
-    if(loading) return <div>로딩중입니다.</div>
-    if(error) return <div>에러발생..관리자에게 문의해주세요🛠</div>
-    if(!data) return <div>데이터를 불러오지 못함</div>
+    const [list, setList] = useState("전체보기"); //기본값은 전체리스트 불러오기
+    
+    const onClick = (e)=>{
+        console.log(e.target.innerHTML);
+        setList(e.target.innerHTML);
+    }
+   
+    console.log(list);
 
     return (
         <div id="posts">
 
-            <table id="postList">
-                <tr>
-                    <th>NO</th>
-                    <th>말머리</th>
-                    <th>제목</th>
-                    <th>작성일</th>
-                </tr>
-                    {data.length===0 && <tr><td colSpan={4}>아직 작성된 포스트가 없습니다.</td></tr>}
-                    {data.map(data=>(
-                        <tr>
-                            <td>{data.no}</td>
-                            <td>{data.part}</td>
-                            <td><Link to={`/post/${data.no}`}>{data.title}</Link></td>
-                            <td>2022.09.30</td>
-                        </tr>
-                    ))}
-            </table>
+            <ul>
+                <li onClick={onClick}>전체보기</li>
+                <li onClick={onClick}>공지사항</li>
+                <li onClick={onClick}>일상</li>
+                <li onClick={onClick}>HTML/CSS</li>
+                <li onClick={onClick}>자바스크립트</li>
+                <li onClick={onClick}>리액트</li>
+                <button>작성하기</button>
+            </ul>
+            
+            <PrintPostList list={list}/>
 
             <div>페이지네이션 만들기</div>
             <div>검색창 만들기</div>

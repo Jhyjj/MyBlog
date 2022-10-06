@@ -1,11 +1,14 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../config/contansts';
 import printPost, { getPost } from '../../modules/posts';
 
 
 const Post_detail = () => {
 
+    const navigator = useNavigate();
     const {no} = useParams();
     console.log(no);
 
@@ -14,6 +17,18 @@ const Post_detail = () => {
     useEffect(()=>{
         dispatch(getPost(no))
     },[dispatch,no])
+
+
+    //포스트 삭제
+    const onDelete = ()=>{
+        alert("정말 이 포스트를 삭제하시겠습니까?")
+        axios.post(`${API_URL}/delete/${no}`)
+        .then(res=>{
+            console.log(res)
+            alert("포스트가 삭제되었습니다.")
+            navigator("/post")
+        })
+    }
 
     if(loading) return <div>로딩중~~</div>
     if(error) return <div>에러발생</div>
@@ -33,8 +48,8 @@ const Post_detail = () => {
             <div dangerouslySetInnerHTML={{__html:data.desc}}></div>
 
             <div>
-                <button>수정</button>
-                <button>삭제</button>
+                <button><Link to={`/editpost/${no}`} state={data}>수정</Link></button>
+                <button onClick={onDelete}>삭제</button>
             </div>
         </div>
     );
